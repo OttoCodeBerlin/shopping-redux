@@ -37,16 +37,18 @@ class App extends Component {
     )
   }
 
-  giveDiscountHandler=()=> {
+  giveDiscountHandler = () => {
     if (this.props.promoCode === 'DISCOUNT666') {
-      this.setState({
-        total: this.state.total*0.9
-      },
-      function() {
-        this.setState({
-          disabledPromoButton: true
-        })
-      })
+      this.setState(
+        {
+          total: this.state.total * 0.9,
+        },
+        function () {
+          this.setState({
+            disabledPromoButton: true,
+          })
+        }
+      )
     }
   }
 
@@ -62,7 +64,7 @@ class App extends Component {
           <br />
           <ItemDetails price={this.state.total.toFixed(2)} />
           <hr />
-          <PromoCode giveDiscount={() => this.giveDiscountHandler()} isDisabled={this.state.disablePromoButton} />
+          <PromoCode giveDiscount={() => this.giveDiscountHandler()} isDisabled={this.state.disabledPromoButton} />
         </Container>
       </div>
     )
